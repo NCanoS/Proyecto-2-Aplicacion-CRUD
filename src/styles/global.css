@@ -1,0 +1,13 @@
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: aquamarine;
+    transition: ease-in-out;
+}
+
+p{
+    background-color: lightcoral;
+    width: fit-content;
+}
