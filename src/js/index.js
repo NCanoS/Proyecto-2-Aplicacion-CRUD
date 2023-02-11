@@ -46,4 +46,9 @@ document.addEventListener('DOMContentLoaded', () =>{
 
         render(equipos);
     });
+
+    borrar_boton.addEventListener('click', () => {
+        localStorage.setItem("equipos",JSON.stringify([]));
+        content_container_div.innerHTML = '';
+    });
 });
