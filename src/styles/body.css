@@ -1,0 +1,21 @@
+.body-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+form{
+    display: grid;
+    grid-template-columns: repeat(3, 2fr 3fr);
+    grid-template-rows:80px;
+    padding: 25px;
+    text-align: center;
+
+}
+
+input{
+    border-radius: 8px;
+    padding: 8px;
+    height: fit-content;
+}

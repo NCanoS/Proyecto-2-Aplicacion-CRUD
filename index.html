@@ -16,8 +16,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="./src/styles/header.css">
-
     <link rel="stylesheet" href="./src/styles/footer.css">
+    <link rel="stylesheet" href="./src/styles/body.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
 <body>
     <!--Start-->
@@ -30,7 +33,56 @@
         </div>
 
     </header>
-    <main></main>
+    
+    <main>
+        <div class="body-container">
+            <div class="description-container">
+                <h1>Práctica de CRUD</h1>
+                <h2>Inventario de equipo médico</h2>
+                <p>Un CRUD un proceso de software que nos permite Crear, Obtener, Modificar y Borrar datos gracias a la persistencia.</p>
+            </div>
+            <form>
+                <label for="Nombre">Tipo de Equipo</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Tipo de equipo médico">
+
+                <label for="Marca">Marca</label>
+                <input type="text" name="marca" id="marca" placeholder="Marca de equipo médico">
+
+                <label for="Ubicacion">Área asignada al equipo</label>
+                <input type="text" name="ubicacion" id="ubicacion" placeholder="Área donde se encuentra el equipo">
+
+                <label for="Cantidad">Cantidad</label>
+                <input type="number" name="cantidad" id="cantidad" placeholder="Cantidad de equipos médicos">
+
+                <label for="Comentarios">Comentarios de Mantenimiento</label>
+                <textarea name="comentarios" id="comentarios" cols="30" rows="10" placeholder="Comentarios de Mantenimiento"></textarea>
+
+                <label for="Operacional">En Operación</label>
+                <input type="checkbox" name="operacional" id="operacional">
+
+                <button id="add">Agregar equipo</button>
+            </form>
+            <div id="content-container">
+
+            </div>
+            <table id="content-table">
+                <thead>
+                    <th>Tipo de Equipo</th>
+                    <th>Marca</th>
+                    <th>Ubicación</th>
+                    <th>Cantidad</th>
+                    <th>Comentarios</th>
+                    <th>En Operación</th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <script src="./src/js/index.js"></script>
+    </main>
+    
     <footer>
         <div id="container-footer">
             © 2023 U Camp. Todos los derechos reservados. Esta es una página de aterrizaje ficticia para fines académicos - creado por <a href="https://github.com/NCanoS">@NCanoS</a>
