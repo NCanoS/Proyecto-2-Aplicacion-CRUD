@@ -1,10 +1,10 @@
-class Equipos {
+class Equipo {
     nombre ="";
     marca = "";
     ubicacion = "";
     cantidad = 0;
     comentarios = "";
-    operacional = false;
+    operacional = null;
 
     constructor(nombre, marca, ubicacion, cantidad, comentarios, operacional){
         this.nombre=nombre;
