@@ -124,13 +124,13 @@ function actualizarEquipo(i){
         guardar_boton.id = i;
 
         guardar_boton.onclick = (e) =>{
+            e.preventDefault();
             const nuevo_nombre_input = nombre_input.value;
             const nuevo_marca_input = marca_input.value;
             const nuevo_ubicacion_input = ubicacion_input.value;
             const nuevo_cantidad_input = cantidad_input.value;
             const nuevo_comentarios_input = comentarios_input.value;
             const nuevo_operacional_input = operacional_input.value;
-            e.preventDefault();
             const equipo = {
                 "nombre": nuevo_nombre_input,
                 "marca": nuevo_marca_input,
@@ -139,7 +139,7 @@ function actualizarEquipo(i){
                 "comentarios": nuevo_comentarios_input,
                 "operacional": nuevo_operacional_input
             }
-            equipos.push(equipo);
+            equipos.splice(i,1,equipo);
             localStorage.setItem('equipos',JSON.stringify(equipos));
             mostrarEquipos(equipos);
             guardar_boton.hidden=true;
