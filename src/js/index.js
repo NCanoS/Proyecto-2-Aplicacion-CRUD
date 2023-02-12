@@ -1,5 +1,4 @@
 var i;
-
 const nombre_input = document.querySelector("#nombre");
 const marca_input = document.querySelector("#marca");
 const ubicacion_input = document.querySelector("#ubicacion");
@@ -8,6 +7,7 @@ const comentarios_input = document.querySelector("#comentarios");
 const operacional_input = document.querySelector("#operacional");
 
 const agregar_boton = document.querySelector("#agregar");
+const cancelar_boton = document.querySelector("#cancelar");
 const actualizar_boton = document.querySelector("#actualizar");
 const borrar_boton = document.getElementById("#borrar");
 
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
         content_container_div.append(parrafo);
     } else{
-        render(equipos);
+        mostrarEquipos(equipos);
     }
 
     agregar_boton.addEventListener('click', (e) => {
@@ -55,49 +55,23 @@ document.addEventListener('DOMContentLoaded', () =>{
 
         localStorage.setItem('equipos',JSON.stringify(equipos));
 
-        render(equipos);
+        mostrarEquipos(equipos);
         form.reset();
         content_container_div.hidden = true;
     });
-
-    /*borrar_boton.addEventListener('click', () => {
-        localStorage.setItem("equipos",JSON.stringify([]));
-        content_container_div.innerHTML = '';
-
-        const parrafo = document.createElement("p");
-        const texto_parrafo = document.createTextNode("No hay elementos para mostrar.");
-        parrafo.appendChild(texto_parrafo);
-
-        content_container_div.append(parrafo);
-    });
-
-    agregar_confirmar.addEventListener('click', (e) =>{
-        e.preventDefault();
-
-    });*/
 });
 
-function render(equipos){
+function mostrarEquipos(equipos){
     document.querySelector("tbody").innerHTML="";
     for(let i = 0; i<equipos.length;i++){
 
-        /*const div_equipo = document.createElement("div");
-        const texto_nombre_marca = document.createTextNode(`${equipos[i].nombre}-${equipos[i].marca}`);
-
-        const borrar_boton = document.createElement("button");
-        const texto_borrar_boton = document.createTextNode("Eliminar");
-        borrar_boton.appendChild(texto_borrar_boton);
+        /*
 
         const actualizar_boton = document.createElement("button");
         const texto_actualizar_boton = document.createTextNode("Actualizar");
-        actualizar_boton.appendChild(texto_actualizar_boton);*/
-        /*
-        div_equipo.appendChild(texto_nombre_marca);
-        div_equipo.appendChild(actualizar_boton);
-        div_equipo.appendChild(borrar_boton);
-        
-        content_container_div.appendChild(div_equipo);
+        actualizar_boton.appendChild(texto_actualizar_boton);
         */
+    
 
         const fila=document.createElement('tr');
         fila.innerHTML = `
@@ -108,50 +82,11 @@ function render(equipos){
         <td>${equipos[i].comentarios}</td>
         <td>${equipos[i].operacional}</td>
         <td>
-            <button id="actualizar" onclick="actualizarEquipo(i,equipos)">Actualizar</button>
-            <button id="borrar" onclick="borrarLocalStorage(i)">Eliminar</button>
+            <button id="actualizar" onclick="actualizarEquipo(${i})">Actualizar</button>
+            <button id="borrar" onclick="borrarLocalStorage(${i})">Eliminar</button>
         </td>
         `;
         document.querySelector("tbody").appendChild(fila);
-
-        /*borrar_boton.onclick = () =>{
-            borrarLocalStorage(i,equipos);
-        }
-        actualizar_boton.onclick = () => {
-            nombre_input.value = equipos[i].nombre;
-            marca_input.value = equipos[i].marca;
-            ubicacion_input.value = equipos[i].ubicacion;
-            cantidad_input.value = equipos[i].cantidad;
-            comentarios_input.value = equipos[i].comentarios;
-            operacional_input.value = equipos[i].operacional;
-        
-            agregar_boton.disabled=true
-    
-            const guardar_boton = document.createElement("button");
-            const texto_guardar_boton = document.createTextNode("Guardar");
-            guardar_boton.appendChild(texto_guardar_boton);
-    
-            guardar_boton.id = i;
-    
-            guardar_boton.onclick = (e) =>{
-                e.preventDefault();
-                const equipo = {
-                    "nombre": nombre_input.value,
-                    "marca": marca_input.value,
-                    "ubicacion": ubicacion_input.value,
-                    "cantidad": cantidad_input.value,
-                    "comentarios": comentarios_input.value,
-                    "operacional": operacional_input.value
-                }
-                equipos.splice(i,1,equipo);
-                localStorage.setItem('equipos',JSON.stringify(equipos));
-                render(equipos);
-                guardar_boton.hidden=true;
-                agregar_boton.disabled=false;
-            }
-            form.appendChild(guardar_boton);
-            form.reset();
-        }*/
     }
     content_container_div.hidden = true;
 }
@@ -161,68 +96,67 @@ function borrarLocalStorage(i){
     equipos.splice(i,1);
     localStorage.setItem('equipos',JSON.stringify(equipos));
     form.reset();
-    render(equipos);
+    mostrarEquipos(equipos);
 }
 
-/*function actualizarEquipo(i){
-    const input_tabla_nombre = document.querySelector(`#nombre-${i}`);
-    const input_tabla_marca = document.querySelector(`#marca-${i}`);
-    const input_tabla_ubicacion = document.querySelector(`#ubicacion-${i}`);
-    const input_tabla_cantidad = document.querySelector(`#cantidad-${i}`);
-    const input_tabla_comentarios = document.querySelector(`#comentarios-${i}`);
-    const input_tabla_operacional = document.querySelector(`#operacional-${i}`);
 
-    const equipos = JSON.parse(localStorage.getItem("equipos")) || [];
+function actualizarEquipo(i){
+    var equipos = JSON.parse(localStorage.getItem('equipos')) || [];
+        nombre_input.value=equipos[i].nombre;
+        marca_input.value=equipos[i].marca;
+        ubicacion_input.value=equipos[i].ubicacion;
+        cantidad_input.value=equipos[i].cantidad;
+        comentarios_input.value=equipos[i].comentarios;
+        operacional_input.value=equipos[i].operacional;
 
-    equipos.splice(i,1,{
-        "nombre": nombre_input.value,
-        "marca": marca_input.value,
-        "ubicacion": ubicacion_input.value,
-        "cantidad": cantidad_input.value,
-        "comentarios": comentarios_input.value,
-        "operacional": operacional_input.value
-    });
-
-    localStorage.setItem("equipos",JSON.stringify(equipos));
-
-    document.querySelector("tbody").innerHTML = '';
-    render(equipos);
-}*/
-
-function actualizarEquipo(i,equipos){
-    //actualizar_boton.onclick = () => {
-        nombre_input.value = equipos[i].nombre;
-        marca_input.value = equipos[i].marca;
-        ubicacion_input.value = equipos[i].ubicacion;
-        cantidad_input.value = equipos[i].cantidad;
-        comentarios_input.value = equipos[i].comentarios;
-        operacional_input.value = equipos[i].operacional;
-    
+        agregar_boton.hidden=true
         agregar_boton.disabled=true
 
         const guardar_boton = document.createElement("button");
         const texto_guardar_boton = document.createTextNode("Guardar");
         guardar_boton.appendChild(texto_guardar_boton);
+        
+        const cancelar_boton = document.createElement("button");
+        const texto_cancelar_boton = document.createTextNode("Cancelar");
+        cancelar_boton.appendChild(texto_cancelar_boton);
+        
 
         guardar_boton.id = i;
 
         guardar_boton.onclick = (e) =>{
+            const nuevo_nombre_input = nombre_input.value;
+            const nuevo_marca_input = marca_input.value;
+            const nuevo_ubicacion_input = ubicacion_input.value;
+            const nuevo_cantidad_input = cantidad_input.value;
+            const nuevo_comentarios_input = comentarios_input.value;
+            const nuevo_operacional_input = operacional_input.value;
             e.preventDefault();
             const equipo = {
-                "nombre": nombre_input.value,
-                "marca": marca_input.value,
-                "ubicacion": ubicacion_input.value,
-                "cantidad": cantidad_input.value,
-                "comentarios": comentarios_input.value,
-                "operacional": operacional_input.value
+                "nombre": nuevo_nombre_input,
+                "marca": nuevo_marca_input,
+                "ubicacion": nuevo_ubicacion_input,
+                "cantidad": nuevo_cantidad_input,
+                "comentarios": nuevo_comentarios_input,
+                "operacional": nuevo_operacional_input
             }
-            equipos.splice(i,1,equipo);
+            equipos.push(equipo);
             localStorage.setItem('equipos',JSON.stringify(equipos));
-            render(equipos);
+            mostrarEquipos(equipos);
             guardar_boton.hidden=true;
+            cancelar_boton.hidden=true;
+            agregar_boton.hidden=false;
             agregar_boton.disabled=false;
+            form.reset();
         }
+
+        cancelar_boton.onclick= () => {
+            form.reset();
+            guardar_boton.hidden=true;
+            agregar_boton.hidden=false;
+            agregar_boton.disabled=false;
+            cancelar_boton.hidden=true;
+        }
+
         form.appendChild(guardar_boton);
-        form.reset();
-    //}
+        form.appendChild(cancelar_boton);
 }
