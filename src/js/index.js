@@ -1,3 +1,5 @@
+var i;
+
 const nombre_input = document.querySelector("#nombre");
 const marca_input = document.querySelector("#marca");
 const ubicacion_input = document.querySelector("#ubicacion");
@@ -13,6 +15,7 @@ const form = document.querySelector("form");
 
 const content_container_div = document.getElementById("content-container");
 const content_table = document.getElementById("content-table");
+const equipos = JSON.parse(localStorage.getItem("equipos"));
 
 document.addEventListener('DOMContentLoaded', () =>{
     const equipos = JSON.parse(localStorage.getItem("equipos"));
@@ -96,14 +99,6 @@ function render(equipos){
         content_container_div.appendChild(div_equipo);
         */
 
-        const borrar_boton = document.createElement("button");
-        const texto_borrar_boton = document.createTextNode("Eliminar");
-        borrar_boton.appendChild(texto_borrar_boton);
-
-        const actualizar_boton = document.createElement("button");
-        const texto_actualizar_boton = document.createTextNode("Actualizar");
-        actualizar_boton.appendChild(texto_actualizar_boton);
-
         const fila=document.createElement('tr');
         fila.innerHTML = `
         <td>${equipos[i].nombre}</td>
@@ -113,22 +108,59 @@ function render(equipos){
         <td>${equipos[i].comentarios}</td>
         <td>${equipos[i].operacional}</td>
         <td>
-            <button type="button" id="actualizar" onclick="actualizarEquipo(${i})">Actualizar</button>
-            <button type="button" id="borrar" onclick="borrarLocalStorage(${i},${equipos})">Eliminar</button>
+            <button id="actualizar" onclick="actualizarEquipo(i,equipos)">Actualizar</button>
+            <button id="borrar" onclick="borrarLocalStorage(i)">Eliminar</button>
         </td>
         `;
         document.querySelector("tbody").appendChild(fila);
 
         /*borrar_boton.onclick = () =>{
             borrarLocalStorage(i,equipos);
+        }
+        actualizar_boton.onclick = () => {
+            nombre_input.value = equipos[i].nombre;
+            marca_input.value = equipos[i].marca;
+            ubicacion_input.value = equipos[i].ubicacion;
+            cantidad_input.value = equipos[i].cantidad;
+            comentarios_input.value = equipos[i].comentarios;
+            operacional_input.value = equipos[i].operacional;
+        
+            agregar_boton.disabled=true
+    
+            const guardar_boton = document.createElement("button");
+            const texto_guardar_boton = document.createTextNode("Guardar");
+            guardar_boton.appendChild(texto_guardar_boton);
+    
+            guardar_boton.id = i;
+    
+            guardar_boton.onclick = (e) =>{
+                e.preventDefault();
+                const equipo = {
+                    "nombre": nombre_input.value,
+                    "marca": marca_input.value,
+                    "ubicacion": ubicacion_input.value,
+                    "cantidad": cantidad_input.value,
+                    "comentarios": comentarios_input.value,
+                    "operacional": operacional_input.value
+                }
+                equipos.splice(i,1,equipo);
+                localStorage.setItem('equipos',JSON.stringify(equipos));
+                render(equipos);
+                guardar_boton.hidden=true;
+                agregar_boton.disabled=false;
+            }
+            form.appendChild(guardar_boton);
+            form.reset();
         }*/
     }
     content_container_div.hidden = true;
 }
 
-function borrarLocalStorage(i,equipos){
+function borrarLocalStorage(i){
+    var equipos = JSON.parse(localStorage.getItem('equipos')) || [];
     equipos.splice(i,1);
     localStorage.setItem('equipos',JSON.stringify(equipos));
+    form.reset();
     render(equipos);
 }
 
@@ -157,7 +189,7 @@ function borrarLocalStorage(i,equipos){
     render(equipos);
 }*/
 
-function actualizarEquipo(i){
+function actualizarEquipo(i,equipos){
     //actualizar_boton.onclick = () => {
         nombre_input.value = equipos[i].nombre;
         marca_input.value = equipos[i].marca;
