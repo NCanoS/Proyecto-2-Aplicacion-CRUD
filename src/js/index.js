@@ -121,7 +121,8 @@ function actualizarEquipo(i){
         cancelar_boton.appendChild(texto_cancelar_boton);
         
 
-        guardar_boton.id = i;
+        guardar_boton.id = "actualizar";
+        cancelar_boton.id = "cancelar";
 
         guardar_boton.onclick = (e) =>{
             e.preventDefault();

@@ -19,3 +19,57 @@ input{
     padding: 8px;
     height: fit-content;
 }
+
+#actualizar{
+    border-radius: 10px;
+    background-color: lightblue;
+    transition: all 0.5s color ease-in-out;
+    font-weight: bold;
+}
+
+#actualizar:hover{
+    background-color: aliceblue;
+    cursor: pointer;
+    scale: 1.1;
+}
+
+#borrar, #cancelar{
+    border-radius: 10px;
+    color: aliceblue;
+    background-color: red;
+    transition: all 0.5s color ease-in-out;
+    font-weight: bold;
+}
+
+#borrar:hover, #cancelar:hover{
+    background-color: aliceblue;
+    color: black;
+    cursor: pointer;
+    scale: 1.1;
+}
+
+#agregar{
+    border-radius: 10px;
+    background-color: greenyellow;
+    transition: all 0.5s color ease-in-out;
+    font-weight: bold;
+}
+
+#agregar:hover{
+    background-color: aliceblue;
+    cursor: pointer;
+    scale: 1.1;
+}
+
+#actualizar{
+    border-radius: 10px;
+    background-color: greenyellow;
+    transition: all 0.5s color ease-in-out;
+    font-weight: bold;
+}
+
+#actualizar:hover{
+    background-color: aliceblue;
+    cursor: pointer;
+    scale: 1.1;
+}
