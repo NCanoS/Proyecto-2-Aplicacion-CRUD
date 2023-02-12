@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="./src/styles/responsive.css">
 </head>
 <body>
-    <!--Start-->
+    <!--Header-->
     <header>
         <div class="container-logo">
             <img src="./src/imgs/logo.png">
@@ -31,9 +31,9 @@
         <div class="container-description">
             <h4>Proyecto No.2: Desarrollo de CRUD</h4>
         </div>
-
     </header>
     
+    <!-- Body -->
     <main>
         <div class="body-container">
             <div class="description-container">
@@ -41,6 +41,8 @@
                 <h2>Inventario de equipo médico</h2>
                 <h3>Un CRUD un proceso de software que nos permite Crear, Obtener, Modificar y Borrar datos gracias a la persistencia.</h3>
             </div>
+            
+            <!--Form-->
             <form>
                 <label for="Nombre">Tipo de Equipo</label>
                 <input type="text" name="nombre" id="nombre" placeholder="Tipo de equipo médico">
@@ -62,10 +64,13 @@
 
                 <button id="agregar">Agregar equipo</button>
             </form>
-        
+            
+            <!--Error container-->
             <div id="content-container">
 
             </div>
+
+            <!--Table of contents-->
             <table id="content-table">
                 <thead>
                     <th>Tipo de Equipo</th>
@@ -81,10 +86,12 @@
             </table>
         </div>
 
+        <!-- Scripts -->
         <script src="./src/js/index.js"></script>
         <script src="./src/js/models/Equipos.js"></script>
     </main>
     
+    <!--Footer -->
     <footer>
         <div id="container-footer">
             © 2023 U Camp. Todos los derechos reservados. Esta es una página de aterrizaje ficticia para fines académicos - creado por <a href="https://github.com/NCanoS">@NCanoS</a>
