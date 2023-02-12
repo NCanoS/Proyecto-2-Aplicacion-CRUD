@@ -1,0 +1,38 @@
+@media (min-width:240px) and (max-width:880px){
+
+    /* HEADER */
+    header{
+        top: 5rem;
+        right: 0;
+    }
+
+    /* MAIN */
+
+    .body-container{
+        height: auto;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        row-gap: 5px;
+        text-align: center;
+    }
+
+    input{
+        border-radius: 8px;
+        padding: 10px;
+        height: fit-content;
+    }
+
+    table {
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+    /* FOOTER */
+    footer {
+        position: absolute;
+    }
+
+}
